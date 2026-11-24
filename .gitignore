@@ -1,0 +1,15 @@
+# Test and output files
+*.tex
+*_media/
+
+# Sample input documents
+*.docx
+*.odt
+
+# Editor and OS files
+*.swp
+*~
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
