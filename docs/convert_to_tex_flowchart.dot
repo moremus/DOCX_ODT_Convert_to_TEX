@@ -1,0 +1,33 @@
+// Source for convert_to_tex_flowchart.pdf (Graphviz).
+// Regenerate with: dot -Tpdf convert_to_tex_flowchart.dot -o convert_to_tex_flowchart.pdf
+
+digraph G {
+  graph [rankdir=TB, nodesep=0.45, ranksep=0.42, fontname="Liberation Sans", labelloc=t, fontsize=20,
+         label="Run convert_to_tex.sh on Linux Mint or Zorin (script on an external drive)\n ", pad=0.35, size="7.8,10!", ratio=compress];
+  node  [fontname="Liberation Sans", fontsize=12, shape=box, style="rounded,filled", fillcolor="#EAF2FB", color="#2F5F98", margin="0.18,0.1"];
+  edge  [fontname="Liberation Sans", fontsize=11, color="#444444"];
+
+  start [label="START\nOpen a terminal (Ctrl+Alt+T)", shape=ellipse, fillcolor="#DDEFD8", color="#3B7A2E"];
+  find  [label="Find your drive name\nls /media/<your-username>/"];
+  cd    [label="Go to the repo folder\ncd /media/<your-username>/<DriveName>/github/\n    DOCX_ODT_Convert_to_TEX"];
+  fmt   [label="Check the drive format\nfindmnt -no FSTYPE -T ."];
+  q1    [label="Format is ext4\n(a Linux format)?", shape=diamond, fillcolor="#FFF3D6", color="#B07A00", margin="0.05,0.05"];
+  chmod [label="One-time setup\nchmod +x convert_to_tex.sh"];
+  run1  [label="Run the script\n./convert_to_tex.sh"];
+  q2    [label="\"Permission denied\"\nerror?", shape=diamond, fillcolor="#FFF3D6", color="#B07A00", margin="0.05,0.05"];
+  bash  [label="Run with bash (no chmod needed;\nworks on any drive format)\nbash convert_to_tex.sh", fillcolor="#F6E3F2", color="#8A3E7E"];
+  note  [shape=note, fillcolor="#FFD9BF", color="#C0612B", fontsize=11, margin="0.2,0.12",
+         label=<<B>IMPORTANT</B><BR ALIGN="LEFT"/>Run the bash command every time you<BR ALIGN="LEFT"/>want to run the script.<BR ALIGN="LEFT"/><BR ALIGN="LEFT"/><B>Converting a different folder of documents:</B><BR ALIGN="LEFT"/>bash convert_to_tex.sh /path/to/folder<BR ALIGN="LEFT"/><BR ALIGN="LEFT"/>(Default folder if none is given:<BR ALIGN="LEFT"/>~/Downloads/Convert)<BR ALIGN="LEFT"/>>];
+  done  [label="DONE\n.tex files appear next to your\noriginal .docx / .odt files", shape=ellipse, fillcolor="#DDEFD8", color="#3B7A2E"];
+
+  start -> find -> cd -> fmt -> q1;
+  q1 -> chmod [label=" Yes"];
+  q1 -> bash  [label=" No\n (ntfs, exfat, vfat)"];
+  chmod -> run1 -> q2;
+  q2 -> done [label=" No"];
+  q2 -> bash [label=" Yes"];
+  bash -> done;
+
+  { rank=same; bash; note; }
+  bash -> note [style=dashed, arrowhead=none, color="#C0612B", constraint=false];
+}
