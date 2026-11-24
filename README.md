@@ -63,6 +63,8 @@ Converted: notes.odt -> notes.tex
 Done. 2 file(s) converted.
 ```
 
+4. A printable step-by-step flowchart for Linux (Mint or Zorin) is available in [docs/convert_to_tex_flowchart.pdf](docs/convert_to_tex_flowchart.pdf). The editable source is in [docs/convert_to_tex_flowchart.dot](docs/convert_to_tex_flowchart.dot) and can be regenerated with `dot -Tpdf convert_to_tex_flowchart.dot -o convert_to_tex_flowchart.pdf` (requires [Graphviz](https://graphviz.org/)).
+
 ## Windows
 
 `.sh` scripts do not run natively on Windows. Two options:
