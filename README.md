@@ -1,4 +1,4 @@
-# docx-odt-to-tex
+# DOCX_ODT_Convert_to_TEX - For Linux Mint and Zorin Operating Systems
 
 A small Bash script that converts every `.docx` and `.odt` file in a folder into a LaTeX `.tex` file, using [pandoc](https://pandoc.org/).
 
@@ -33,8 +33,8 @@ pandoc --version
 1. Clone the repository (or download the script):
 
    ```bash
-   git clone https://github.com/<your-username>/docx-odt-to-tex.git
-   cd docx-odt-to-tex
+   git clone https://github.com/moremus/DOCX_ODT_Convert_to_TEX.git
+   cd DOCX_ODT_Convert_to_TEX
    ```
 
 2. Make the script executable (one time only):
